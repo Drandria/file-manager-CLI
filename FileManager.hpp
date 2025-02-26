@@ -14,6 +14,7 @@ class FileManager
         ~FileManager();
         void listFiles();
         void changeDirectory(string directoryPath);
+        void createFiles(string command);
 };
 
 #endif

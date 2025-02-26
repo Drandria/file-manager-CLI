@@ -1,6 +1,8 @@
-#include "FileManager.hpp"
 #include <filesystem>
 #include <iostream>
+#include <fstream>
+#include "FileManager.hpp"
+#include "FileUtils.hpp"
 
 namespace fs = filesystem;
 
@@ -42,5 +44,24 @@ void FileManager::changeDirectory(string directoryPath) {
         }
     } catch (const fs::filesystem_error &e) {
         cerr << "Erorr : " << endl;
+    }
+}
+
+void FileManager::createFiles(string command) {
+
+    vector<string>arg = split(command, " ");
+
+    if (arg[0] == "file") {
+
+        ofstream fst(arg[1]);
+        cout << "fichier " << arg[1] << " créer avec succès" << endl;
+        fst.close();
+
+    } else if (arg[0] == "dir") {
+        if (fs::create_directory(arg[1])) {
+            cout << "dossier " << arg[1] << " créer avec succès" << endl;
+        } else {
+            cout << "erreur lors de la création du dossier" << arg[1] << endl;
+        }
     }
 }
