@@ -32,6 +32,14 @@ int main () {
 
             fm.createFiles(command.substr(7));
 
+        } else if (command.substr(0,7) == "rename ") {
+
+            fm.renameFiles(command.substr(7));
+
+        } else if (command.substr(0,7) == "remove ") {
+
+            fm.removeFiles(command.substr(7));
+
         } else{
 
             cout << "Commande inconnue" << endl;

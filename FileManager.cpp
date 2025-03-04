@@ -65,3 +65,35 @@ void FileManager::createFiles(string command) {
         }
     }
 }
+
+void FileManager::renameFiles(string command) {
+
+    vector<string>name = split(command, " ");
+
+    if (fs::exists(name[0])) {
+
+        fs::rename(name[0], name[1]);
+
+    } else {
+
+        cout << "Dossier ou fichier introuvable" << endl;
+
+    }
+
+}
+
+void FileManager::removeFiles(string name) {
+
+    if(fs::exists(name)) {
+        if (fs::remove(name)) {
+            cout << name << " supprimer avec succès" << endl;
+        } else {
+            cout << name << " n'a pas été supprimé" << endl;
+        }
+    } else {
+
+        cout << "Dossier ou fichier introuvable" << endl;
+
+    }
+
+}
